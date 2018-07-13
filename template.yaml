@@ -1,0 +1,76 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Serverless lead capture tool
+
+Parameters:
+  CorsOrigin:
+    Type: String
+    Default: '*'
+    Description: (Optional) Cross-origin resource sharing (CORS) Origin. You can specify a single origin, all "*" or leave empty and no CORS will be applied.
+    MaxLength: 250
+Conditions:
+  IsCorsDefined: !Not [!Equals [!Ref CorsOrigin, '']]
+
+Globals:
+    Function:
+        Timeout: 3
+        Runtime: nodejs8.10
+        Handler: app.handler
+        Environment:
+            Variables:
+                TABLE_NAME: !Ref WebsiteLeadCapture
+                IS_CORS: IsCorsDefined
+                CORS_ORIGIN: !Ref CorsOrigin
+    Api:
+        Cors:
+            AllowMethods: "'*'"
+            AllowHeaders: "'*'"
+            AllowOrigin: "'*'"
+
+
+Resources:
+
+    ContactFormSubmitProcessor:
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Handler: app.handler
+            Policies:
+                -   Version: 2012-10-17
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   dynamodb:putItem
+                            Resource: '*'
+                
+            Events:
+                LeadCapture:
+                    Type: Api 
+                    Properties:
+                        Path: /v1/send/{companyId}
+                        Method: POST
+                        
+    WebsiteLeadCapture:
+        Type: 'AWS::DynamoDB::Table'
+        Description: Database table for storing website leads
+        Properties:
+            TableName: ServerlessLeadCaptureTool
+            AttributeDefinitions:
+                -   AttributeName: companyId
+                    AttributeType: S
+                -   AttributeName: date
+                    AttributeType: S
+            KeySchema:
+                -   AttributeName: companyId
+                    KeyType: HASH
+                -   AttributeName: date
+                    KeyType: RANGE
+            ProvisionedThroughput:
+                ReadCapacityUnits: 1
+                WriteCapacityUnits: 1
+
+Outputs:
+
+    HelloWorldApi:
+      Description: "API Gateway endpoint URL your lead capture form"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/v1/send"
+

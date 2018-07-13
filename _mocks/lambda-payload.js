@@ -1,0 +1,61 @@
+{
+    "resource": "/v1/send/{companyId}",
+    "path": "/v1/send/de1b1f4e-38f8-43d6-9452-a39c81a03d76",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8,de;q=0.7",
+        "CloudFront-Forwarded-Proto": "https",
+        "CloudFront-Is-Desktop-Viewer": "true",
+        "CloudFront-Is-Mobile-Viewer": "false",
+        "CloudFront-Is-SmartTV-Viewer": "false",
+        "CloudFront-Is-Tablet-Viewer": "false",
+        "CloudFront-Viewer-Country": "ME",
+        "content-type": "application/json",
+        "Host": "dneh94kxea.execute-api.us-east-1.amazonaws.com",
+        "origin": "https://vfs.cloud9.us-east-1.amazonaws.com",
+        "Referer": "https://vfs.cloud9.us-east-1.amazonaws.com/vfs/c10cd4db0b654b69a3fdba8d8e19ed5e/preview/serverless-lead-capture/form.html?_c9_id=livepreview2&_c9_host=https://console.aws.amazon.com",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+        "Via": "2.0 5b57906dd14eaff78d7273fbad3ab00e.cloudfront.net (CloudFront)",
+        "X-Amz-Cf-Id": "dzdmInL8qUO6fxcgy2nJ62aJChkDHqv2q8-nhlubKpVmpMGYIDjYrg==",
+        "X-Amzn-Trace-Id": "Root=1-5b48bb99-574068636f9bbb86e159aaca",
+        "X-Forwarded-For": "37.221.177.4, 52.46.38.14",
+        "X-Forwarded-Port": "443",
+        "X-Forwarded-Proto": "https"
+    },
+    "queryStringParameters": null,
+    "pathParameters": {
+        "companyId": "de1b1f4e-38f8-43d6-9452-a39c81a03d76"
+    },
+    "stageVariables": null,
+    "requestContext": {
+        "resourceId": "h9fodo",
+        "resourcePath": "/v1/send/{companyId}",
+        "httpMethod": "POST",
+        "extendedRequestId": "J-I_6HZBoAMFfrQ=",
+        "requestTime": "13/Jul/2018:14:47:53 +0000",
+        "path": "/Prod/v1/send/de1b1f4e-38f8-43d6-9452-a39c81a03d76",
+        "accountId": "012276481874",
+        "protocol": "HTTP/1.1",
+        "stage": "Prod",
+        "requestTimeEpoch": 1531493273057,
+        "requestId": "b8ab654d-86ab-11e8-9917-7baea1d34884",
+        "identity": {
+            "cognitoIdentityPoolId": null,
+            "accountId": null,
+            "cognitoIdentityId": null,
+            "caller": null,
+            "sourceIp": "37.221.177.4",
+            "accessKey": null,
+            "cognitoAuthenticationType": null,
+            "cognitoAuthenticationProvider": null,
+            "userArn": null,
+            "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+            "user": null
+        },
+        "apiId": "dneh94kxea"
+    },
+    "body": "{\"date\":1531493272845,\"name\":\"Dimitri Tarasowski\",\"email\":\"dimitri+test@tarasowski.de\",\"phone\":\"+4930945345\",\"message\":\"I need a quote from your website\",\"companyId\":\"de1b1f4e-38f8-43d6-9452-a39c81a03d76\"}",
+    "isBase64Encoded": false
+}

@@ -1,0 +1,23 @@
+{
+  "name": "hello_world",
+  "version": "1.0.0",
+  "description": "hello world sample for NodeJS",
+  "main": "src/index.js",
+  "repository": "https://github.com/aws-samples/cookiecutter-aws-sam-hello-nodejs",
+  "author": "SAM CLI",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "scripts": {
+    "test": "No testing yet",
+    "folder": "rm -rf build && mkdir build",
+    "bucket": "aws s3api create-bucket --bucket serverless-lead-capture-tool --region us-east-1",
+    "package": "aws cloudformation package --template-file template.yaml --output-template-file build/output.yaml --s3-bucket serverless-lead-capture-tool",
+    "deploy": "aws cloudformation deploy --template-file build/output.yaml --stack-name serverless-lead-capture-tool --capabilities CAPABILITY_NAMED_IAM",
+    "qd": "npm run folder && npm run bucket && npm run package && npm run deploy"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  }
+}
